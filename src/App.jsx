@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/products")
+      .get("VITE_API_URL/products")
       .then((response) => setProducts (response.data))
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
