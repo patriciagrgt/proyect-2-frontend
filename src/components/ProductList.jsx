@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard";
-import { deleteProduct } from "../../services/ProductService";
+import { deleteProduct } from "../services/ProductService";
 
 function ProductList({ products, setProducts }) {
   const handleDelete = (id) => {
