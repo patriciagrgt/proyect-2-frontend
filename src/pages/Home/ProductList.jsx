@@ -1,18 +1,22 @@
-const ProductList = ({ products }) => {
-    return (
-      <div>
-        <h2>Lista de Productos</h2>
-        <ul>
-          {products.length > 0 ? (
-            products.map((product) => (
-              <li key={product.id}>{product.nombre}</li>
-            ))
-          ) : (
-            <p>No hay productos disponibles.</p>
-          )}
-        </ul>
-      </div>
-    );
+import ProductCard from "./ProductCard";
+import { deleteProduct } from "../../services/ProductService";
+
+function ProductList({ products, setProducts }) {
+  const handleDelete = (id) => {
+    deleteProduct(id)
+      .then(() => {
+        setProducts(products.filter((product) => product.id !== id)); // Actualiza el estado
+      })
+      .catch((error) => console.error("Error deleting product:", error));
   };
-  
-  export default ProductList;
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} onDelete={handleDelete} />
+      ))}
+    </div>
+  );
+}
+
+export default ProductList;
