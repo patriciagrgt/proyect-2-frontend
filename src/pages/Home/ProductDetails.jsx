@@ -19,7 +19,7 @@ function ProductDetails() {
       <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
       <img src={product.image} alt={product.name} className="w-full h-64 object-cover rounded-md" />
       <p className="text-gray-600 mt-2">{product.brand}</p>
-      <p className="text-gray-600">{product.capacity} ml</p>
+      <p className="text-gray-600">{product.capacity}</p>
       <p className="text-gray-600">{product.category}</p>
       <p className="text-gray-600 mt-4">{product.description}</p>
       <h2 className="text-lg font-bold mt-4">Ingredientes</h2>

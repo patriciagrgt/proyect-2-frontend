@@ -12,6 +12,7 @@ import Cart from "./pages/Cart/Cart";
 import About from "./pages/About/About";
 import NotFound from "./pages/NotFound/NotFound";
 import { getAllProducts } from "./services/ProductService";
+import { CartProvider } from "./Context/CartContext";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -23,22 +24,24 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Navbar />
+    <CartProvider>
       <div>
-        <Routes>
-          <Route path="/" element={<Home products={products} />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/create" element={<CreateProduct />} />
-          <Route path="/admin/edit/:id" element={<EditProduct />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/about" element={<About />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Navbar />
+        <div>
+          <Routes>
+            <Route path="/" element={<Home products={products} />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/create" element={<CreateProduct />} />
+            <Route path="/admin/edit/:id" element={<EditProduct />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </CartProvider>
   );
 }
 
