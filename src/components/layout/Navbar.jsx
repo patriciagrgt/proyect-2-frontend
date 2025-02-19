@@ -17,11 +17,6 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/about" className="hover:text-green-300">
-              Acerca de
-            </Link>
-          </li>
-          <li>
             <Link to="/cart" className="relative hover:text-green-300">
               🛒 Carrito
               {cart.length > 0 && ( // Muestra el indicador solo si hay productos

@@ -13,11 +13,12 @@ function Home({ products }) {
     : products;
 
   return (
+    
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Productos Destacados</h1>
 
       {/* Select para filtrar por categoría */}
-      <div className="mb-4">
+      <div className="text-left mb-4">
         <label htmlFor="category" className="block text-sm font-medium text-gray-700">
           Filtrar por categoría:
         </label>
@@ -34,7 +35,8 @@ function Home({ products }) {
             </option>
           ))}
         </select>
-      </div>
+        </div>
+    
 
       {/* Lista de productos filtrados */}
       <ProductList products={filteredProducts} />
