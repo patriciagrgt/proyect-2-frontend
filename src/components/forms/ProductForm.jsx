@@ -29,7 +29,7 @@ function ProductForm({ initialData = {}, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 ml-64 mr-64">
       <div>
         <label className="block text-sm font-medium text-gray-700">Nombre</label>
         <input
@@ -128,7 +128,7 @@ function ProductForm({ initialData = {}, onSubmit }) {
 
       <button
         type="submit"
-        className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+        className="bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-500 cursor-pointer"
       >
         Guardar
       </button>

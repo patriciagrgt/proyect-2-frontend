@@ -18,7 +18,7 @@ function EditProduct() {
     updateProduct(id, updatedData)
       .then(() => {
         alert("Producto actualizado exitosamente");
-        navigate("/"); // Redirige a la página de inicio
+        navigate("/admin");
       })
       .catch((error) => console.error("Error updating product:", error));
   };

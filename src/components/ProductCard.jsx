@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import { toast } from "react-toastify";
+import { ShoppingCart } from "lucide-react";
 
 function ProductCard({ product }) {
   const { addToCart, cart } = useCart();
@@ -31,7 +32,7 @@ function ProductCard({ product }) {
         <p className="text-gray-600">{product.brand}</p>
         <h2 className="text-lg font-bold mt-2 text-center">{product.name}</h2>
         <p className="text-neutral-900 font-medium">{product.capacity}</p>
-        <p className="font-bold text-neutral-900 text-xl mt-2">
+        <p className="font-bold text-teal-700 text-neutral-900 text-xl mt-2">
           {product.price.toString().replace(".", ",")} €
         </p>
       </Link>
@@ -48,10 +49,10 @@ function ProductCard({ product }) {
           });
         }}
         className={`mt-auto flex items-center justify-center gap-2 w-full py-3 rounded-md text-white font-semibold text-lg 
-              transition-all cursor-pointer ${isInCart ? "bg-gray-500 cursor-not-allowed" : "bg-green-700 hover:bg-green-600"}`}
+              transition-all cursor-pointer ${isInCart ? "bg-gray-500 cursor-not-allowed" : "bg-teal-700 hover:bg-teal-500"}`}
         disabled={isInCart}
       >
-        {isInCart ? "✔ En el carrito" : "Añadir"} 🛒
+        {isInCart ? "Añadido" : "Añadir"} <ShoppingCart size={20} />
       </button>
 
     </div>

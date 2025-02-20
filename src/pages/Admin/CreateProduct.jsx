@@ -9,14 +9,14 @@ function CreateProduct() {
     createProduct(productData)
       .then(() => {
         alert("Producto creado exitosamente");
-        navigate("/"); // Redirige a la página de inicio
+        navigate("/admin");
       })
       .catch((error) => console.error("Error creating product:", error));
   };
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Crear Producto</h1>
+      <h1 className="text-2xl font-bold mb-4 ml-64">Crear Producto</h1>
       <ProductForm onSubmit={handleSubmit} />
     </div>
   );

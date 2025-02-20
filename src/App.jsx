@@ -28,11 +28,11 @@ function App() {
 
   return (
     <CartProvider>
-      <div>
+      <div className="flex flex-col min-h-screen">
         <ToastContainer position="top-center" autoClose={2000} />
-        
+
         <Navbar />
-        <div>
+        <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home products={products} />} />
             <Route path="/product/:id" element={<ProductDetails />} />

@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProductById } from "../../services/ProductService";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
+import { useCart } from "../../Context/CartContext";
+import { ShoppingCart } from "lucide-react";
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const { addToCart } = useCart(); // Obtiene la función addToCart del contexto
 
   useEffect(() => {
     getProductById(id)
@@ -43,11 +46,12 @@ function ProductDetails() {
         />
         <p className="text-gray-600 mb-2">{product.capacity}</p>
         <p className="text-gray-500">{product.category}</p>
-        <p className="text-xl font-bold text-green-600 mt-4">
-          {product.price.toString().replace(".", ",")}
-          €</p>
+        <p className="text-xl font-bold text-teal-700 mt-4 mb-4">
+          {product.price.toString().replace(".", ",")} €
+        </p>
         <button
           onClick={() => {
+            addToCart(product);
             toast.success("Tu producto se ha añadido al carrito 🎉", {
               style: {
                 fontSize: "1.2rem",
@@ -56,9 +60,10 @@ function ProductDetails() {
               },
             });
           }}
-          className="bg-green-500 text-white px-6 py-3 rounded-md mt-4 hover:bg-green-600 transition text-lg cursor-pointer"
+
+          className="mt-auto flex items-center justify-center gap-2 py-3 rounded-md text-white font-semibold text-lg bg-teal-700 hover:bg-teal-500  px-6 mt-4 transition cursor-pointer"
         >
-          Añadir 🛒
+          Añadir <ShoppingCart size={20} />
         </button>
       </div>
 
@@ -89,7 +94,7 @@ function ProductDetails() {
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2 hover:bg-blue-600 transition"
+            className="bg-white border-teal-700 text-teal-700 px-4 py-2 rounded-md mt-2 hover:text-teal-300 transition cursor-pointer"
           >
             Enviar Comentario
           </button>

@@ -1,24 +1,24 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../Context/CartContext";
-import { Home, ShoppingCart } from "lucide-react"; // Importa los iconos
+import { Home, ShoppingCart } from "lucide-react";
 import logo from "../../assets/logo.png";
 
 function Navbar() {
   const { cart } = useCart();
 
   return (
-    <nav className="bg-green-700 p-4 text-white shadow-md">
+    <nav className="bg-teal-600 p-4 text-white shadow-md">
       <div className="container mx-auto flex justify-between items-center px-8">
         <Link to="/" className="flex items-center text-xl font-bold space-x-2">
           <img src={logo} alt="Logo NaturalHub" className="h-16 w-16 rounded-full" />
-          <span>NaturalHub</span>
+          <span className="text-3xl kaushan-script-regular">NaturalHub</span>
         </Link>
 
         <ul className="flex space-x-10 items-center">
           <li>
             <Link
               to="/"
-              className="hover:text-green-300 transition-colors duration-200 flex items-center"
+              className="hover:text-teal-300 transition-colors duration-200 flex items-center"
             >
               <Home size={28} />
             </Link>
@@ -26,7 +26,7 @@ function Navbar() {
           <li>
             <Link
               to="/cart"
-              className="relative hover:text-green-300 transition-colors duration-200"
+              className="relative hover:text-teal-300 transition-colors duration-200"
             >
               <ShoppingCart size={28} />
               {cart.length > 0 && (

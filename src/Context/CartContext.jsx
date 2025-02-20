@@ -19,7 +19,8 @@ export const CartProvider = ({ children }) => {
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
-    console.log("Producto añadido:", product); // Para depuración
+    /* console.log("Producto añadido:", product);
+    console.log("Carrito actualizado:", cart); */
   };
 
   // Eliminar un producto del carrito

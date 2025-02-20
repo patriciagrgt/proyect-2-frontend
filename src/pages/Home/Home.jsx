@@ -22,7 +22,7 @@ function Home({ products }) {
           id="category"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400 hover:text-teal-500"
         >
           <option value="">Todas las categorías</option>
           {categories.map((category) => (
