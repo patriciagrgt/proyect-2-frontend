@@ -4,29 +4,25 @@ import ProductList from "../../components/ProductList";
 function Home({ products }) {
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  // Obtener todas las categorías únicas de los productos
+  // Obtener categorías únicas
   const categories = [...new Set(products.map((product) => product.category))];
 
-  // Filtrar productos por categoría seleccionada
+  // Filtrar productos por categoría
   const filteredProducts = selectedCategory
     ? products.filter((product) => product.category === selectedCategory)
     : products;
 
   return (
-    
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Productos Destacados</h1>
+    <div className="p-6 max-w-6xl mx-auto">
+      {/* Contenedor del título y el filtro en la misma línea */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-gray-800">Productos Destacados</h1>
 
-      {/* Select para filtrar por categoría */}
-      <div className="text-left mb-4">
-        <label htmlFor="category" className="block text-sm font-medium text-gray-700">
-          Filtrar por categoría:
-        </label>
         <select
           id="category"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="mt-1 p-2 border rounded-md"
+          className="p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">Todas las categorías</option>
           {categories.map((category) => (
@@ -35,10 +31,9 @@ function Home({ products }) {
             </option>
           ))}
         </select>
-        </div>
-    
+      </div>
 
-      {/* Lista de productos filtrados */}
+      {/* Lista de productos */}
       <ProductList products={filteredProducts} />
     </div>
   );

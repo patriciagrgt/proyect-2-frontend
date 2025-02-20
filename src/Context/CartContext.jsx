@@ -19,6 +19,7 @@ export const CartProvider = ({ children }) => {
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
+    console.log("Producto añadido:", product); // Para depuración
   };
 
   // Eliminar un producto del carrito
@@ -40,10 +41,14 @@ export const CartProvider = ({ children }) => {
   };
 
   // Calcular el total del carrito
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const total = cart.reduce((sum, item) => {
+    const itemPrice = parseFloat(item.price);
+    const itemQuantity = parseInt(item.quantity, 10);
+    if (!isNaN(itemPrice) && !isNaN(itemQuantity)) {
+      return sum + itemPrice * itemQuantity;
+    }
+    return sum;
+  }, 0);
 
   return (
     <CartContext.Provider

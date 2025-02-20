@@ -1,45 +1,61 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../Context/CartContext";
+import { toast } from "react-toastify";
 
 function ProductCard({ product }) {
-  const { addToCart } = useCart(); // Obtén la función addToCart del contexto
+  const { addToCart, cart } = useCart();
+  const [liked, setLiked] = useState(false);
 
-  const [liked, setLiked] = useState(false); // Estado para el "me gusta"
-
-  const toggleLike = () => {
-    setLiked(!liked);
-  };
+  const toggleLike = () => setLiked(!liked);
+  const isInCart = cart.some((item) => item.id === product.id);
 
   return (
-    <div className="border p-4 rounded-lg shadow-md flex flex-col items-center text-left">
-      <Link to={`/product/${product.id}`} >
-        <img src={product.image} alt={product.name} className="w-full h-48 object-contain rounded-md" />
+    <div className="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center text-left 
+                    transition-transform duration-300 hover:scale-105 w-64 h-[420px]">
+
+      {/* Botón Me Gusta */}
+      <button
+        onClick={toggleLike}
+        className="absolute top-2 right-2 text-2xl transition-transform hover:scale-110"
+      >
+        {liked ? "❤️" : "🤍"}
+      </button>
+
+      <Link to={`/product/${product.id}`} className="w-full flex flex-col items-center">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-40 object-contain rounded-md"
+        />
         <p className="text-gray-600">{product.brand}</p>
-        <h2 className="text-lg font-bold mt-2">{product.name}</h2>
-        <p className="text-neutral-900 text-left font-medium">{product.capacity} </p>
-        <p className="font-bold text-neutral-900 text-xl mt-4">{product.price} €</p>
+        <h2 className="text-lg font-bold mt-2 text-center">{product.name}</h2>
+        <p className="text-neutral-900 font-medium">{product.capacity}</p>
+        <p className="font-bold text-neutral-900 text-xl mt-2">
+          {product.price.toString().replace(".", ",")} €
+        </p>
       </Link>
-        
-      <div className="mt-3 flex gap-2">
-        <button
-          onClick={() => addToCart(product)} // Añade el producto al carrito
-          className="btn-block bg-green-900 text-white px-10 py-1 rounded-md hover:bg-green-600 transition cursor-pointer"
-        >
-          Añadir 🛒
-        </button>
-        <button
-          onClick={toggleLike}
-          className={`px-4 py-2 rounded-lg border-2 transition ${liked ? "bg-red-100 border-red-500 text-red-500" : "bg-white border-gray-300 text-gray-400"}`}
-        >
-          {liked ? "❤️" : "🤍"}
-        </button>
-      </div>
+
+      <button
+        onClick={() => {
+          addToCart(product);
+          toast.success("Tu producto se ha añadido al carrito 🎉", {
+            style: {
+              fontSize: "1.2rem",
+              padding: "16px",
+              width: "420px",
+            },
+          });
+        }}
+        className={`mt-auto flex items-center justify-center gap-2 w-full py-3 rounded-md text-white font-semibold text-lg 
+              transition-all cursor-pointer ${isInCart ? "bg-gray-500 cursor-not-allowed" : "bg-green-700 hover:bg-green-600"}`}
+        disabled={isInCart}
+      >
+        {isInCart ? "✔ En el carrito" : "Añadir"} 🛒
+      </button>
 
     </div>
   );
 }
 
 export default ProductCard;
-
-

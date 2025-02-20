@@ -14,6 +14,9 @@ import NotFound from "./pages/NotFound/NotFound";
 import { getAllProducts } from "./services/ProductService";
 import { CartProvider } from "./Context/CartContext";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   const [products, setProducts] = useState([]);
 
@@ -26,6 +29,8 @@ function App() {
   return (
     <CartProvider>
       <div>
+        <ToastContainer position="top-center" autoClose={2000} />
+        
         <Navbar />
         <div>
           <Routes>

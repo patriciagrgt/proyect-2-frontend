@@ -5,7 +5,7 @@ function ProductList({ products, setProducts }) {
   const handleDelete = (id) => {
     deleteProduct(id)
       .then(() => {
-        setProducts(products.filter((product) => product.id !== id)); // Actualiza el estado
+        setProducts(products.filter((product) => product.id !== id));
       })
       .catch((error) => console.error("Error deleting product:", error));
   };
