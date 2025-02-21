@@ -14,6 +14,7 @@ function Home({ products }) {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
+      
       {/* Contenedor del título y el filtro en la misma línea */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Productos Destacados</h1>

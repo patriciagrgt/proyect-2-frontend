@@ -9,7 +9,7 @@ function About() {
       <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
         <h1 className="text-4xl font-bold text-teal-800 mb-6 mt-6">Sobre Nosotros</h1>
         <p className="text-lg text-gray-700 mb-6">
-          En <span className="font-semibold text-teal-600">NaturalHub</span>, nos dedicamos a ofrecerte una selección cuidadosamente curada de los mejores productos naturales y ecológicos de marcas comprometidas con el bienestar y la sostenibilidad. Creemos en la importancia de cuidar tu cuerpo y el planeta, por eso elegimos solo productos que respeten ambos.
+          En <span className="font-semibold text-teal-600">NaturalHub</span>, nos dedicamos a ofrecerte una cuidada selección de los mejores productos naturales y ecológicos de marcas comprometidas con el bienestar y la sostenibilidad. Creemos en la importancia de cuidar tu cuerpo y el planeta, por eso elegimos solo productos que respeten ambos.
         </p>
         <p className="text-lg text-gray-700 mb-6">
           En nuestro catálogo encontrarás desde pasta de dientes y crema solar hasta champús, mascarillas, desodorantes y mucho más. Todos los productos que vendemos están elaborados con ingredientes naturales, libres de químicos dañinos y cruelty-free.
@@ -22,17 +22,17 @@ function About() {
           <img
             src={planet}
             alt="Cuidado del Planeta"
-            className="w-full h-48 object-cover rounded-lg"
+            className="w-full h-56 object-cover rounded-lg"
           />
           <img
             src={crueltyfree}
             alt="Cruelty-free"
-            className="w-full h-48 object-cover rounded-lg"
+            className="w-full h-56 object-cover rounded-lg"
           />
           <img
             src={personalcare}
             alt="Cuidado personal sostenible"
-            className="w-full h-48 object-cover rounded-lg"
+            className="w-full h-56 object-cover rounded-lg"
           />
         </div>
 

@@ -128,7 +128,7 @@ function ProductForm({ initialData = {}, onSubmit }) {
 
       <button
         type="submit"
-        className="bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-500 cursor-pointer"
+        className="bg-teal-700 text-white px-16 py-4 rounded-md hover:bg-teal-500 cursor-pointer mb-8"
       >
         Guardar
       </button>

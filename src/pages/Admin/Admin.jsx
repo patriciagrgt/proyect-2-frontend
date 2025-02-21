@@ -22,7 +22,7 @@ function Admin() {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">Gestión de Inventario</h1>
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">Gestión de inventario</h1>
       <Link
         to="/admin/create"
         className="bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-500 mb-6 inline-block cursor-pointer"
@@ -45,7 +45,7 @@ function Admin() {
             {products.map((product) => (
               <tr key={product.id} className="border-b border-gray-300 hover:bg-gray-100">
                 <td className="py-3 px-6">
-                  <img src={product.image} alt={product.name} className="h-12 w-12 object-cover rounded-md" />
+                  <img src={product.image} alt={product.name} className="h-12 w-12 object-contain rounded-md" />
                 </td>
                 <td className="py-3 px-6">{product.name}</td>
                 <td className="py-3 px-6">{product.brand}</td>
@@ -54,7 +54,7 @@ function Admin() {
                 <td className="py-3 px-6 flex justify-center space-x-2">
                   <Link
                     to={`/admin/edit/${product.id}`}
-                    className="bg-slate-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 cursor-pointer"
+                    className="bg-slate-500 text-white px-3 py-1 rounded-md hover:bg-slate-700 cursor-pointer"
                   >
                     Editar
                   </Link>
