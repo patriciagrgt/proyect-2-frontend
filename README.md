@@ -3,12 +3,15 @@
 NaturalHub es un marketplace especializado en productos naturales, ecológicos y sostenibles. La plataforma permite a los usuarios explorar, filtrar y comprar productos de diversas categorías, como cuidado personal, cosmética natural y más. Cada producto ha sido seleccionado por su calidad, origen natural y compromiso con la sostenibilidad.  
 
 
-🚀 Tecnologías Utilizadas
+🚀 Tecnologías Utilizadas  
+
 Frontend: React + Vite
 Estilos: CSS y Tailwind CSS
-Backend: JSON Server
+Backend: JSON Server  
+
 Despliegue:
-Frontend: Netlify
+Frontend: Netlify  
+
 Backend: Render
 Gestión de Estado: React Hooks
 Enrutamiento: React Router  
@@ -50,15 +53,18 @@ Desarrollado con ❤️ por Patricia
 🔗 Enlaces  
 
 
-🌐 Web en Producción (Netlify)
+🌐 Web en Producción (Netlify)  
+
 https://naturalhub.netlify.app/  
 
 
-📂 Repositorio Backend (Render)
+📂 Repositorio Backend (Render)  
+
 https://proyect-2-backend.onrender.com/  
 
 
-💻 Repositorio en GitHub
+💻 Repositorio en GitHub  
+
 https://github.com/Patricia-GraciaGutierrez/proyect-2-frontend
 https://github.com/Patricia-GraciaGutierrez/proyect-2-backend  
 
