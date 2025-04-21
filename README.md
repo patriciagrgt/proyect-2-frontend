@@ -83,8 +83,8 @@ https://proyect-2-backend.onrender.com/
 
 💻 Repositorio en GitHub  
 
-https://github.com/Patricia-GraciaGutierrez/proyect-2-frontend
-https://github.com/Patricia-GraciaGutierrez/proyect-2-backend  
+https://github.com/patriciagrgt/proyect-2-frontend
+https://github.com/patriciagrgt/proyect-2-backend  
 
 
 
