@@ -3,14 +3,16 @@ import { useEffect, useState } from "react";
 import { getProductById } from "../../services/ProductService";
 import { toast } from "react-toastify";
 import { useCart } from "../../Context/CartContext";
-import { ShoppingCart } from "lucide-react";
+import { useFavorites } from "../../Context/FavoritesContext";
+import { ShoppingCart, Heart } from "lucide-react";
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
-  const { addToCart } = useCart(); // Obtiene la función addToCart del contexto
+  const { addToCart } = useCart();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   useEffect(() => {
     getProductById(id)
@@ -32,11 +34,39 @@ function ProductDetails() {
     setComment("");
   };
 
+  const handleToggleFavorite = () => {
+    if (product) {
+      const wasAdded = toggleFavorite(product);
+      if (wasAdded) {
+        toast.success("¡Producto añadido a favoritos!", {
+          style: {
+            fontSize: "1.2rem",
+            padding: "16px",
+            width: "420px",
+          },
+        });
+      }
+    }
+  };
+
   if (!product) return <div className="text-center text-lg p-6">Cargando...</div>;
+
+  const isProductFavorite = isFavorite(product.id);
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <div className="bg-white shadow-lg rounded-lg p-6">
+      <div className="bg-white shadow-lg rounded-lg p-6 relative">
+        <button
+          onClick={handleToggleFavorite}
+          className="absolute top-4 right-4 text-2xl transition-transform hover:scale-110"
+        >
+          <Heart 
+            size={28} 
+            fill={isProductFavorite ? "red" : "none"} 
+            stroke={isProductFavorite ? "red" : "currentColor"} 
+          />
+        </button>
+
         <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
         <p className="text-lg text-gray-600 mb-2">{product.brand}</p>
         <img

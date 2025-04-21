@@ -1,15 +1,27 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useCart } from "../Context/CartContext";
+import { useFavorites } from "../Context/FavoritesContext";
 import { toast } from "react-toastify";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Heart } from "lucide-react";
 
 function ProductCard({ product }) {
   const { addToCart, cart } = useCart();
-  const [liked, setLiked] = useState(false);
-
-  const toggleLike = () => setLiked(!liked);
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const isProductFavorite = isFavorite(product.id);
   const isInCart = cart.some((item) => item.id === product.id);
+
+  const handleToggleFavorite = () => {
+    const wasAdded = toggleFavorite(product);
+    if (wasAdded) {
+      toast.success("¡Producto añadido a favoritos!", {
+        style: {
+          fontSize: "1.2rem",
+          padding: "16px",
+          width: "420px",
+        },
+      });
+    }
+  };
 
   return (
     <div className="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center text-left 
@@ -17,10 +29,10 @@ function ProductCard({ product }) {
 
       {/* Botón Me Gusta */}
       <button
-        onClick={toggleLike}
+        onClick={handleToggleFavorite}
         className="absolute top-2 right-2 text-2xl transition-transform hover:scale-110"
       >
-        {liked ? "❤️" : "🤍"}
+        <Heart size={24} fill={isProductFavorite ? "red" : "none"} stroke={isProductFavorite ? "red" : "currentColor"} />
       </button>
 
       <Link to={`/product/${product.id}`} className="w-full flex flex-col items-center">
